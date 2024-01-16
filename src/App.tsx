@@ -1,9 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Rooms from './components/Rooms/Rooms';
 
 function App() {
-  const Rooms = () => <div>Rooms</div>;
-
   return (
     <BrowserRouter>
       <Routes>
