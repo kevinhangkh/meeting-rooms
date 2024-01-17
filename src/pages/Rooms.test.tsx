@@ -36,7 +36,7 @@ describe('Rooms component', () => {
 
     render(<Rooms />);
 
-    const loadingScreen = screen.getByTestId('rooms-loading');
+    const loadingScreen = screen.getByTestId('loading');
 
     expect(loadingScreen).toBeInTheDocument();
   });

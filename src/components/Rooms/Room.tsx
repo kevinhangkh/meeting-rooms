@@ -8,12 +8,20 @@ const BORDER_RADIUS: string = '10px';
 
 interface Props {
   room: RoomType;
+  handleBook: (name: string) => void;
+  open: boolean;
 }
 
 export default function Room(props: Props): ReactElement {
-  const { room } = props;
+  const { room, handleBook, open } = props;
 
-  const handleClick = (): void => {};
+  const handleClick = (): void => {
+    if (!open) {
+      handleBook(room.name);
+    }
+  };
+
+  const bookingDisabled = () => room.spots <= 0;
 
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} data-testid="room-card">
@@ -74,7 +82,7 @@ export default function Room(props: Props): ReactElement {
               </Typography>
             </Box>
             <Button
-              disabled={room.spots <= 0}
+              disabled={bookingDisabled()}
               onClick={handleClick}
               data-testid={`room-book-button-${room.name}`}
               variant="contained"

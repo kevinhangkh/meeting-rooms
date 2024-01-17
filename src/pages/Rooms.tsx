@@ -1,45 +1,14 @@
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { ReactElement } from 'react';
 
 import useRooms, { IUseRooms } from '../hooks/useRooms';
 import RoomList from '../components/Rooms/RoomList';
+import LoadingSpinner from '../components/ui/LoadingSpinner';
+import Title from '../components/Rooms/Title';
+import Error from '../components/ui/Error';
 
 export default function Rooms(): ReactElement {
   const { rooms, loading, error }: IUseRooms = useRooms();
-
-  const Header = (): ReactElement => (
-    <Box
-      width="100%"
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="start"
-      data-testid="rooms-header"
-    >
-      <Typography variant="h3">Rooms</Typography>
-      <Box>
-        <Typography variant="h5" color="secondary">
-          Odio nisi, lectus dis nulla. Ultrices maecenas vitae rutrum dolor
-          <br />
-          ultricies donec risus sodales. Tempus quis et.
-        </Typography>
-      </Box>
-    </Box>
-  );
-
-  const Error = (): ReactElement => (
-    <Box data-testid="rooms-error">
-      <Typography variant="h6" color="error">
-        Oops, an error occurred... please try again.
-      </Typography>
-    </Box>
-  );
-
-  const Loading = (): ReactElement => (
-    <Box data-testid="rooms-loading">
-      <CircularProgress color="primary" />
-    </Box>
-  );
 
   return (
     <Box
@@ -53,10 +22,16 @@ export default function Rooms(): ReactElement {
       boxSizing="border-box"
       data-testid="rooms-box"
     >
-      <Header />
+      <Title />
 
       <Box>
-        {loading ? <Loading /> : error ? <Error /> : <RoomList rooms={rooms} />}
+        {loading ? (
+          <LoadingSpinner />
+        ) : error ? (
+          <Error />
+        ) : (
+          <RoomList rooms={rooms} />
+        )}
       </Box>
     </Box>
   );
