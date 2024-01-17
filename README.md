@@ -1,8 +1,8 @@
-# Getting Started with Create React App
+# Book a meeting room
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It's written in Typescript using React framework.
 
-## Available Scripts
+## Scripts
 
 In the project directory, you can run:
 
@@ -11,36 +11,45 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner
 
-### `npm run build`
+## Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- React
+- Typescript
+- React router dom
+- Axios 
+- Material UI
+- Jest
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Overview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This application was built with React as it's the framework I'm the most comfortable with and perfect for single page applications. 
 
-### `npm run eject`
+The `Rooms` page is the main page of the application and accessed through `localhost:3000/rooms`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I have created a route to `/rooms` with the react-router-dom library
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In order to fetch the rooms data, I have created a hook `useRooms` in which the fetching is made. This hook then returns an object containing the rooms data, the loading state and the error (if any).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The Rooms component will display either the 'loading' component, the 'error' component or the RoomList component according to the state of the fetching.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The RoomList component is mapping through the array of rooms passed via the props and then renders each room using the Room component.
 
-## Learn More
+I chose to give feedback to the user in the form of a snackbar notification popping up when a booking is made. That's the simplest form of feedback I could think of. 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I chose not to use any state management libraries because it would be too overkill for this simple application. Normally I would consider using Recoil because of its ease of use. Redux is too heavy for this app and there is too much boilerplate code.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+For styling, I have used Material UI which allows to save time in the design of each UI component. Also the responsiveness can be achieved without too many headaches.
+
+## Improvement ideas
+
+If I had more time, I would spend it on the following:
+
+- Modal dialog to ask for confirmation before booking a room (I would consider using a state management solution)
+- Split the rooms list into two categories: rooms with available spots and rooms that are full
+- Create small and reusable UI components for all the text rendering components (Typography)
+- Logging errors
+- Internationalization with i18n (if needed)
