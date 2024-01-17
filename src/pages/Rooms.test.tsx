@@ -22,7 +22,7 @@ describe('Rooms component', () => {
 
     render(<Rooms />);
 
-    const errorScreen = screen.getByTestId('rooms-error');
+    const errorScreen = screen.getByTestId('error');
 
     expect(errorScreen).toBeInTheDocument();
   });
