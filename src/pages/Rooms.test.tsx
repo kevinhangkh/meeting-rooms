@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 
-import useRooms from '../../../hooks/useRooms';
-import Rooms from '../Rooms';
-import Room from '../../../models/rooms';
+import useRooms from '../hooks/useRooms';
+import Rooms from './Rooms';
+import Room from '../types/rooms';
 
-jest.mock('../../../hooks/useRooms');
+jest.mock('../hooks/useRooms');
 
 const mockUseRooms = useRooms as jest.MockedFunction<typeof useRooms>;
 

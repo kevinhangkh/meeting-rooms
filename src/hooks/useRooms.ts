@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Room from '../models/rooms';
+import Room from '../types/rooms';
 import getRooms from '../api/rooms';
 
 export interface IUseRooms {
